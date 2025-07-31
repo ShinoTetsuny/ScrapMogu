@@ -1,4 +1,4 @@
-import generateResponse from "../utils/generateResponse";
+import generateResponse from "../utils/generateResponse.js";
 
 class ScrapController {
         constructor( data ) {
@@ -21,3 +21,5 @@ class ScrapController {
 
         }
 }
+
+export default new ScrapController({});

@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 
   
 const service = {
-    scrap : `http://localhost:${process.env.PORT_SCRAP}`,
+    scrap : `http://localhost:${process.env.PORT_SCRAP}/scrap`,
 }
 
 app.use("/api/:service", (req, res, next) => {
