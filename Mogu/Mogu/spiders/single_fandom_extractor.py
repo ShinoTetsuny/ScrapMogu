@@ -10,11 +10,10 @@ class SingleFandomExtractorSpider(scrapy.Spider):
     name = 'single_fandom_extractor'
     allowed_domains = ['fandom.com']
     
-    def __init__(self, fandom_url=None, fandom_name=None, request_file=None, *args, **kwargs):
+    def __init__(self, fandom_url=None, fandom_name=None, *args, **kwargs):
         super(SingleFandomExtractorSpider, self).__init__(*args, **kwargs)
         self.fandom_url = fandom_url
         self.fandom_name = fandom_name
-        self.request_file = request_file
         self.characters_extracted = 0
         self.characters_failed = 0
         

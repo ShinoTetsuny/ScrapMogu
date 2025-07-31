@@ -35,10 +35,15 @@ class DataJsonHandler(FileSystemEventHandler):
         """Traite le fichier data.json pour extraire les nouvelles URLs"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                requests = json.load(f)
+                data = json.load(f)
 
-            if not isinstance(requests, list):
-                
+            # Rendre le script plus robuste: accepter un objet seul ou une liste d'objets
+            if isinstance(data, dict):
+                requests = [data]
+            elif isinstance(data, list):
+                requests = data
+            else:
+                print(f"❌ Erreur: {file_path} doit contenir un objet JSON ou une liste d'objets.")
                 return
 
             new_requests_found = 0
@@ -54,7 +59,9 @@ class DataJsonHandler(FileSystemEventHandler):
                     self.launch_character_extraction(fandom_url, fandom_name)
                     new_requests_found += 1
 
-            if new_requests_found == 0:
+            if new_requests_found > 0:
+                 print(f"✅ {new_requests_found} nouvelle(s) demande(s) traitée(s).")
+            else:
                 print("✅ Aucune nouvelle URL à traiter dans data.json.")
 
         except json.JSONDecodeError:
