@@ -1,0 +1,13 @@
+{
+  "extraction_stats": {
+    "total_characters_processed": 0,
+    "characters_filtered_out": 0,
+    "characters_accepted": 0,
+    "names_corrected_from_attributes": 0,
+    "characters_with_images": 0,
+    "characters_by_fandom": {}
+  },
+  "characters": [],
+  "extraction_date": "2025-07-31T17:14:41.937978",
+  "total_count": 0
+}

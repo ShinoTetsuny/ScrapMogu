@@ -9,20 +9,25 @@ export default function runScrapy(url) {
     ? path.join(projectDir, ".venv", "Scripts", "scrapy.exe")
     : path.join(projectDir, ".venv", "bin", "scrapy");
 
-  // <-- Changement ici : passer fandom_url au lieu de url
-  const cmd = `"${scrapyExecutable}" crawl single_fandom_extractor -a fandom_url=${url} -o output.json`;
+  // Nettoyage du chemin (important sur Windows)
+  const scrapyCmd = isWindows
+    ? `"${scrapyExecutable.replace(/\\/g, "/")}"`
+    : `"${scrapyExecutable}"`;
+
+  const cmd = `"${scrapyExecutable}" crawl character_scraper_2 -a fandom_url=${url} -o output.json`;
+
+
 
   return new Promise((resolve, reject) => {
     exec(cmd, { cwd: projectDir }, (error, stdout, stderr) => {
       if (error) {
-        console.error(`Erreur lors de l'exécution de Scrapy: ${error.message}`);
+        console.error(`Erreur d'exécution Scrapy: ${error.message}`);
         return reject(error);
       }
       if (stderr) {
-        console.error(`Erreur standard: ${stderr}`);
-        return reject(new Error(stderr));
+        console.warn(`Scrapy stderr: ${stderr}`);
       }
-      console.log(`Sortie standard: ${stdout}`);
+      console.log(`Scrapy stdout: ${stdout}`);
       resolve(stdout);
     });
   });
