@@ -1,0 +1,678 @@
+{
+  "stats": {
+    "total_fandoms": 130,
+    "successful_fandoms": 130,
+    "fandoms_with_characters": 130,
+    "total_characters_found": 21474,
+    "errors": 0
+  },
+  "results": [
+    {
+      "fandom_name": "Pokemon",
+      "fandom_url": "https://pokemon.fandom.com/wiki/Pokémon_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:25.048705",
+      "characters_page_found": true,
+      "characters_page_url": "https://pokemon.fandom.com/wiki/Category:Playable_characters",
+      "characters_count": 100,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Deathnote",
+      "fandom_url": "https://deathnote.fandom.com/wiki/Death_Note_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:25.518786",
+      "characters_page_found": true,
+      "characters_page_url": "https://deathnote.fandom.com/wiki/Category:Live_action_film_characters",
+      "characters_count": 186,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Lotr",
+      "fandom_url": "https://lotr.fandom.com/wiki/The_One_Wiki_to_Rule_Them_All",
+      "analysis_timestamp": "2025-07-31T14:38:26.553887",
+      "characters_page_found": true,
+      "characters_page_url": "https://lotr.fandom.com/wiki/Category:Canon_characters_in_The_Rings_of_Power",
+      "characters_count": 156,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Gameofthrones",
+      "fandom_url": "https://gameofthrones.fandom.com/wiki/Game_of_Thrones_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:26.984770",
+      "characters_page_found": true,
+      "characters_page_url": "https://gameofthrones.fandom.com/wiki/Category:Starring_cast_members_of_House_of_the_Dragon",
+      "characters_count": 275,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Dc",
+      "fandom_url": "https://dc.fandom.com/wiki/DC_Database",
+      "analysis_timestamp": "2025-07-31T14:38:27.033284",
+      "characters_page_found": true,
+      "characters_page_url": "https://dc.fandom.com/wiki/Category:Good_Characters",
+      "characters_count": 283,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Hunterxhunter",
+      "fandom_url": "https://hunterxhunter.fandom.com/wiki/Hunterpedia",
+      "analysis_timestamp": "2025-07-31T14:38:25.574787",
+      "characters_page_found": true,
+      "characters_page_url": "https://kimetsu-no-yaiba.fandom.com/wiki/",
+      "characters_count": 430,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Tokyoghoul",
+      "fandom_url": "https://tokyoghoul.fandom.com/wiki/Tokyo_Ghoul_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:26.278697",
+      "characters_page_found": true,
+      "characters_page_url": "https://tokyoghoul.fandom.com/wiki/category:Characters",
+      "characters_count": 326,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Witcher",
+      "fandom_url": "https://witcher.fandom.com/wiki/Witcher_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:27.493104",
+      "characters_page_found": true,
+      "characters_page_url": "https://witcher.fandom.com/wiki/Category:The_Witcher_characters",
+      "characters_count": 254,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Elderscrolls",
+      "fandom_url": "https://elderscrolls.fandom.com/wiki/The_Elder_Scrolls_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:29.363692",
+      "characters_page_found": true,
+      "characters_page_url": "https://elderscrolls.fandom.com/wiki/Category:Characters",
+      "characters_count": 151,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Diablo",
+      "fandom_url": "https://diablo.fandom.com/wiki/Diablo_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:29.955003",
+      "characters_page_found": true,
+      "characters_page_url": "https://diablo.fandom.com/wiki/Category:Characters",
+      "characters_count": 290,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Gta",
+      "fandom_url": "https://gta.fandom.com/wiki/GTA_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:30.646444",
+      "characters_page_found": true,
+      "characters_page_url": "https://gta.fandom.com/wiki/Characters_in_GTA_VI",
+      "characters_count": 281,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Gotham",
+      "fandom_url": "https://gotham.fandom.com/wiki/Gotham_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:31.091597",
+      "characters_page_found": true,
+      "characters_page_url": "https://gotham.fandom.com/wiki/Category:Characters",
+      "characters_count": 214,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Supernatural",
+      "fandom_url": "https://supernatural.fandom.com/wiki/Supernatural_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:30.931117",
+      "characters_page_found": true,
+      "characters_page_url": "https://supernatural.fandom.com/wiki/Category:Season_1_characters",
+      "characters_count": 414,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Theoffice",
+      "fandom_url": "https://theoffice.fandom.com/wiki/Dunderpedia:_The_Office_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:33.111731",
+      "characters_page_found": true,
+      "characters_page_url": "https://theoffice.fandom.com/wiki/Category:Characters",
+      "characters_count": 205,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Jurassicpark",
+      "fandom_url": "https://jurassicpark.fandom.com/wiki/Jurassic_Park_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:33.432180",
+      "characters_page_found": true,
+      "characters_page_url": "https://jurassicpark.fandom.com/wiki/Category:Characters",
+      "characters_count": 257,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Matrix",
+      "fandom_url": "https://matrix.fandom.com/wiki/The_Matrix_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:33.747952",
+      "characters_page_found": true,
+      "characters_page_url": "https://matrix.fandom.com/wiki/Category:Resistance_fighters",
+      "characters_count": 197,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Terminator",
+      "fandom_url": "https://terminator.fandom.com/wiki/Terminator_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:33.667332",
+      "characters_page_found": true,
+      "characters_page_url": "https://terminator.fandom.com/wiki/Category:Terminator_Zero_characters",
+      "characters_count": 136,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Alien",
+      "fandom_url": "https://alien.fandom.com/wiki/Xenopedia",
+      "analysis_timestamp": "2025-07-31T14:38:35.551111",
+      "characters_page_found": true,
+      "characters_page_url": "https://avp.fandom.com/wiki/Category:Alien_(film)_characters",
+      "characters_count": 209,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Smallville",
+      "fandom_url": "https://smallville.fandom.com/wiki/Smallville_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:35.832505",
+      "characters_page_found": true,
+      "characters_page_url": "https://smallville.fandom.com/wiki/Category:Main_characters",
+      "characters_count": 59,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Batman",
+      "fandom_url": "https://batman.fandom.com/wiki/Batman_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:36.429117",
+      "characters_page_found": true,
+      "characters_page_url": "https://batman.fandom.com/wiki/Category:Characters",
+      "characters_count": 259,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Charmed",
+      "fandom_url": "https://charmed.fandom.com/wiki/Charmed_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:37.090731",
+      "characters_page_found": true,
+      "characters_page_url": "https://charmed.fandom.com/wiki/Category:Characters",
+      "characters_count": 262,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Kingsman",
+      "fandom_url": "https://kingsman.fandom.com/wiki/Kingsman_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:38.524826",
+      "characters_page_found": true,
+      "characters_page_url": "https://kingsman.fandom.com/wiki/Category:Characters",
+      "characters_count": 99,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Reservoirdogs",
+      "fandom_url": "https://reservoirdogs.fandom.com/wiki/Reservoir_Dogs_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:39.517809",
+      "characters_page_found": true,
+      "characters_page_url": "https://reservoirdogs.fandom.com/wiki/Category:Reservoir_Dogs_characters",
+      "characters_count": 10,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Pulpfiction",
+      "fandom_url": "https://pulpfiction.fandom.com/wiki/Pulp_Fiction_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:39.884734",
+      "characters_page_found": true,
+      "characters_page_url": "https://pulpfiction.fandom.com/wiki/Category:Characters",
+      "characters_count": 16,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Fridaythe13th",
+      "fandom_url": "https://fridaythe13th.fandom.com/wiki/Friday_the_13th_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:40.656319",
+      "characters_page_found": true,
+      "characters_page_url": "https://fridaythe13th.fandom.com/wiki/Category:Characters",
+      "characters_count": 168,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Robocop",
+      "fandom_url": "https://robocop.fandom.com/wiki/RoboCop_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:39.466293",
+      "characters_page_found": true,
+      "characters_page_url": "https://robocop.fandom.com/wiki/Category:Characters",
+      "characters_count": 31,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Paranormalactivity",
+      "fandom_url": "https://paranormalactivity.fandom.com/wiki/Paranormal_Activity_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:41.836967",
+      "characters_page_found": true,
+      "characters_page_url": "https://paranormalactivity.fandom.com/wiki/Category:Characters",
+      "characters_count": 45,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Dota2",
+      "fandom_url": "https://dota2.fandom.com/wiki/Dota_2_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:43.441387",
+      "characters_page_found": true,
+      "characters_page_url": "https://dota2.fandom.com/wiki/Heroes",
+      "characters_count": 168,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Saw",
+      "fandom_url": "https://saw.fandom.com/wiki/Saw_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:44.429039",
+      "characters_page_found": true,
+      "characters_page_url": "https://sawfilms.fandom.com/wiki/Category:Characters",
+      "characters_count": 244,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Apexlegends",
+      "fandom_url": "https://apexlegends.fandom.com/wiki/Apex_Legends_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:43.240064",
+      "characters_page_found": true,
+      "characters_page_url": "https://apexlegends.fandom.com/wiki/Minor_characters",
+      "characters_count": 318,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Theconjuring",
+      "fandom_url": "https://theconjuring.fandom.com/wiki/The_Conjuring_Universe_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:44.568540",
+      "characters_page_found": true,
+      "characters_page_url": "https://theconjuringuniverse.fandom.com/wiki/Category:Characters",
+      "characters_count": 115,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Streetfighter",
+      "fandom_url": "https://streetfighter.fandom.com/wiki/Street_Fighter_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:44.076012",
+      "characters_page_found": true,
+      "characters_page_url": "https://streetfighter.fandom.com/wiki/Category:Characters",
+      "characters_count": 227,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Hereditary",
+      "fandom_url": "https://hereditary.fandom.com/wiki/Hereditary_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:42.434889",
+      "characters_page_found": true,
+      "characters_page_url": "https://hereditary.fandom.com/wiki/Characters",
+      "characters_count": 12,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Tekken",
+      "fandom_url": "https://tekken.fandom.com/wiki/Tekken_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:44.030019",
+      "characters_page_found": true,
+      "characters_page_url": "https://tekken.fandom.com/wiki/Category:Fighters",
+      "characters_count": 217,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Mortalkombat",
+      "fandom_url": "https://mortalkombat.fandom.com/wiki/Mortal_Kombat_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:44.644867",
+      "characters_page_found": true,
+      "characters_page_url": "https://mortalkombat.fandom.com/wiki/Category:Mortal_Kombat_1_Characters",
+      "characters_count": 138,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Halflife",
+      "fandom_url": "https://halflife.fandom.com/wiki/Half-Life_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:46.422939",
+      "characters_page_found": true,
+      "characters_page_url": "https://half-life.fandom.com/wiki/Category:Real_world_people",
+      "characters_count": 184,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Fireemblem",
+      "fandom_url": "https://fireemblem.fandom.com/wiki/Fire_Emblem_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:46.472532",
+      "characters_page_found": true,
+      "characters_page_url": "https://fireemblem.fandom.com/wiki/Category:Characters",
+      "characters_count": 98,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Xenoblade",
+      "fandom_url": "https://xenoblade.fandom.com/wiki/Xenoblade_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:46.031694",
+      "characters_page_found": true,
+      "characters_page_url": "https://xenoblade.fandom.com/wiki/Category:XC_Characters",
+      "characters_count": 32,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Donkeykong",
+      "fandom_url": "https://donkeykong.fandom.com/wiki/Donkey_Kong_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:45.846684",
+      "characters_page_found": true,
+      "characters_page_url": "https://donkeykong.fandom.com/wiki/Category:Heroes",
+      "characters_count": 105,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Advancewars",
+      "fandom_url": "https://advancewars.fandom.com/wiki/Advance_Wars_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:46.886536",
+      "characters_page_found": true,
+      "characters_page_url": "https://advancewars.fandom.com/wiki/Category:Characters",
+      "characters_count": 36,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Devilmaycry",
+      "fandom_url": "https://devilmaycry.fandom.com/wiki/Devil_May_Cry_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:46.715750",
+      "characters_page_found": true,
+      "characters_page_url": "https://devilmaycry.fandom.com/wiki/Category:Playable_characters",
+      "characters_count": 140,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Sonicthehedgehog",
+      "fandom_url": "https://sonicthehedgehog.fandom.com/wiki/Sonic_News_Network",
+      "analysis_timestamp": "2025-07-31T14:38:48.418654",
+      "characters_page_found": true,
+      "characters_page_url": "https://sonic.fandom.com/wiki/Category:Game_characters",
+      "characters_count": 127,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Silenthill",
+      "fandom_url": "https://silenthill.fandom.com/wiki/Silent_Hill_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:47.138280",
+      "characters_page_found": true,
+      "characters_page_url": "https://silenthill.fandom.com/wiki/Category:Characters",
+      "characters_count": 261,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Deathloop",
+      "fandom_url": "https://deathloop.fandom.com/wiki/Deathloop_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:47.782817",
+      "characters_page_found": true,
+      "characters_page_url": "https://deathloop.fandom.com/wiki/Category:Characters",
+      "characters_count": 27,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Control",
+      "fandom_url": "https://control.fandom.com/wiki/Control_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:48.308997",
+      "characters_page_found": true,
+      "characters_page_url": "https://control.fandom.com/wiki/Category:Characters",
+      "characters_count": 232,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Maxpayne",
+      "fandom_url": "https://maxpayne.fandom.com/wiki/Max_Payne_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:48.490200",
+      "characters_page_found": true,
+      "characters_page_url": "https://maxpayne.fandom.com/wiki/Category:Characters",
+      "characters_count": 99,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Alanwake",
+      "fandom_url": "https://alanwake.fandom.com/wiki/Alan_Wake_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:48.561805",
+      "characters_page_found": true,
+      "characters_page_url": "https://alanwake.fandom.com/wiki/Category:Characters",
+      "characters_count": 210,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Rockstargames",
+      "fandom_url": "https://rockstargames.fandom.com/wiki/Rockstar_Games_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:48.648330",
+      "characters_page_found": true,
+      "characters_page_url": "https://rockstargames.fandom.com/wiki/Category:Characters",
+      "characters_count": 72,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Lanoire",
+      "fandom_url": "https://lanoire.fandom.com/wiki/L.A._Noire_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:49.052397",
+      "characters_page_found": true,
+      "characters_page_url": "https://lanoire.fandom.com/wiki/Characters",
+      "characters_count": 361,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Reddeadredemption",
+      "fandom_url": "https://reddeadredemption.fandom.com/wiki/Red_Dead_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:51.014827",
+      "characters_page_found": true,
+      "characters_page_url": "https://reddead.fandom.com/wiki/Category:Playable_characters",
+      "characters_count": 63,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Watchdogs",
+      "fandom_url": "https://watchdogs.fandom.com/wiki/Watch_Dogs_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:50.612183",
+      "characters_page_found": true,
+      "characters_page_url": "https://watchdogs.fandom.com/wiki/Category:Characters",
+      "characters_count": 209,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Cyberpunk",
+      "fandom_url": "https://cyberpunk.fandom.com/wiki/Cyberpunk_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:51.379198",
+      "characters_page_found": true,
+      "characters_page_url": "https://cyberpunk.fandom.com/wiki/Category:Cyberpunk_Edgerunners_characters",
+      "characters_count": 151,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Rainbowsix",
+      "fandom_url": "https://rainbowsix.fandom.com/wiki/Rainbow_Six_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:51.335193",
+      "characters_page_found": true,
+      "characters_page_url": "https://rainbowsix.fandom.com/wiki/Category:Characters_of_Tom_Clancy%27s_Rainbow_Six_Extraction",
+      "characters_count": 141,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Ghostrecon",
+      "fandom_url": "https://ghostrecon.fandom.com/wiki/Ghost_Recon_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:51.683114",
+      "characters_page_found": true,
+      "characters_page_url": "https://ghostrecon.fandom.com/wiki/Category:Characters",
+      "characters_count": 229,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Thedivision",
+      "fandom_url": "https://thedivision.fandom.com/wiki/The_Division_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:51.965057",
+      "characters_page_found": true,
+      "characters_page_url": "https://thedivision.fandom.com/wiki/People",
+      "characters_count": 209,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Titanfall",
+      "fandom_url": "https://titanfall.fandom.com/wiki/Titanfall_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:52.680616",
+      "characters_page_found": true,
+      "characters_page_url": "https://titanfall.fandom.com/wiki/Category:Characters",
+      "characters_count": 148,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Farcry",
+      "fandom_url": "https://farcry.fandom.com/wiki/Far_Cry_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:52.369735",
+      "characters_page_found": true,
+      "characters_page_url": "https://farcry.fandom.com/wiki/Far_Cry_characters",
+      "characters_count": 128,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Medalofhonor",
+      "fandom_url": "https://medalofhonor.fandom.com/wiki/Medal_of_Honor_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:52.718691",
+      "characters_page_found": true,
+      "characters_page_url": "https://medalofhonor.fandom.com/wiki/Category:Characters",
+      "characters_count": 227,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Wolfenstein",
+      "fandom_url": "https://wolfenstein.fandom.com/wiki/Wolfenstein_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:53.045941",
+      "characters_page_found": true,
+      "characters_page_url": "https://wolfenstein.fandom.com/wiki/Category:Youngblood_characters",
+      "characters_count": 37,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Crysis",
+      "fandom_url": "https://crysis.fandom.com/wiki/Crysis_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:52.783246",
+      "characters_page_found": true,
+      "characters_page_url": "https://crysis.fandom.com/wiki/Characters",
+      "characters_count": 54,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Tomclancy",
+      "fandom_url": "https://tomclancy.fandom.com/wiki/Tom_Clancy_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:53.954364",
+      "characters_page_found": true,
+      "characters_page_url": "https://jackryan.fandom.com/wiki/Category:Character",
+      "characters_count": 274,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Quake",
+      "fandom_url": "https://quake.fandom.com/wiki/Quake_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:54.014623",
+      "characters_page_found": true,
+      "characters_page_url": "https://quake.fandom.com/wiki/Category:Quake_III_Arena_characters",
+      "characters_count": 106,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Payday",
+      "fandom_url": "https://payday.fandom.com/wiki/Payday_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:54.298575",
+      "characters_page_found": true,
+      "characters_page_url": "https://payday.fandom.com/wiki/Minor_characters",
+      "characters_count": 175,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Gears",
+      "fandom_url": "https://gears.fandom.com/wiki/Gears_of_War_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:55.886943",
+      "characters_page_found": true,
+      "characters_page_url": "https://gearsofwar.fandom.com/wiki/Category:Characters",
+      "characters_count": 356,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Killingfloor",
+      "fandom_url": "https://killingfloor.fandom.com/wiki/Killing_Floor_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:55.526596",
+      "characters_page_found": true,
+      "characters_page_url": "https://killingfloor.fandom.com/wiki/Category:Killing_Floor_3_characters",
+      "characters_count": 38,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Warframe",
+      "fandom_url": "https://warframe.fandom.com/wiki/WARFRAME_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:55.442516",
+      "characters_page_found": true,
+      "characters_page_url": "https://warframe.fandom.com/wiki/Characters",
+      "characters_count": 647,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Outerworlds",
+      "fandom_url": "https://outerworlds.fandom.com/wiki/The_Outer_Worlds_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:57.600381",
+      "characters_page_found": true,
+      "characters_page_url": "https://theouterworlds.fandom.com/wiki/Category:Characters",
+      "characters_count": 33,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Starcraft",
+      "fandom_url": "https://starcraft.fandom.com/wiki/StarCraft_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:56.682858",
+      "characters_page_found": true,
+      "characters_page_url": "https://starcraft.fandom.com/wiki/Category:Zerg_characters",
+      "characters_count": 76,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Starcitizen",
+      "fandom_url": "https://starcitizen.fandom.com/wiki/Star_Citizen_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:55.833393",
+      "characters_page_found": true,
+      "characters_page_url": "https://marvelheroes.fandom.com/wiki/",
+      "characters_count": 229,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Totalwar",
+      "fandom_url": "https://totalwar.fandom.com/wiki/Total_War_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:56.923118",
+      "characters_page_found": true,
+      "characters_page_url": "https://totalwar.fandom.com/wiki/Category:Homeric_characters_(Total_War_Saga:_Troy)",
+      "characters_count": 94,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Warhammer40k",
+      "fandom_url": "https://warhammer40k.fandom.com/wiki/Warhammer_40k_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:58.145401",
+      "characters_page_found": true,
+      "characters_page_url": "https://warhammer40k.fandom.com/wiki/Category:Characters",
+      "characters_count": 286,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Thesims",
+      "fandom_url": "https://thesims.fandom.com/wiki/The_Sims_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:59.710097",
+      "characters_page_found": true,
+      "characters_page_url": "https://thesims.fandom.com/wiki/Category:Characters",
+      "characters_count": 26,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Simcity",
+      "fandom_url": "https://simcity.fandom.com/wiki/SimCity_Wiki",
+      "analysis_timestamp": "2025-07-31T14:38:59.650007",
+      "characters_page_found": true,
+      "characters_page_url": "https://simcity.fandom.com/wiki/Category:Characters",
+      "characters_count": 58,
+      "error_message": null
+    },
+    {
+      "fandom_name": "Zootycoon",
+      "fandom_url": "https://zootycoon.fandom.com/wiki/Zoo_Tycoon_Wiki",
+      "analysis_timestamp": "2025-07-31T14:39:01.174640",
+      "characters_page_found": true,
+      "characters_page_url": "https://zootycoon.fandom.com/wiki/Category:Characters",
+      "characters_count": 2,
+      "error_message": null
+    }
+  ],
+  "analysis_date": "2025-07-31T14:39:02.392482"
+}
