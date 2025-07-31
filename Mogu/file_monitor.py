@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 """
-Système de surveillance du dossier back-end/data pour détecter les nouveaux JSON
-et lancer automatiquement l'extraction des personnages
+Système de surveillance du fichier back-end/data/data.json pour lancer
+automatiquement l'extraction des personnages.
 """
 
 import os
@@ -11,147 +10,130 @@ import subprocess
 from pathlib import Path
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from urllib.parse import urlparse
 
-class FandomRequestHandler(FileSystemEventHandler):
-    """Gestionnaire d'événements pour les nouveaux fichiers JSON"""
-    
+class DataJsonHandler(FileSystemEventHandler):
+    """Gestionnaire d'événements pour le fichier data.json"""
+
     def __init__(self):
-        self.processed_files = set()
-        
-    def on_created(self, event):
-        """Appelé quand un nouveau fichier est créé"""
+        self.processed_urls = set()
+        # Charger les URLs déjà traitées au démarrage si nécessaire
+        self.load_processed_urls()
+
+    def on_modified(self, event):
+        """Appelé quand un fichier est modifié"""
         if event.is_directory:
             return
-            
-        file_path = event.src_path
-        
-        # Vérifier que c'est un fichier JSON
-        if not file_path.endswith('.json'):
-            return
-            
-        # Éviter de traiter le même fichier plusieurs fois
-        if file_path in self.processed_files:
-            return
-            
-        print(f"🔍 Nouveau fichier détecté: {file_path}")
-        
-        # Attendre un peu pour s'assurer que le fichier est complètement écrit
-        time.sleep(2)
-        
-        try:
-            self.process_fandom_request(file_path)
-            self.processed_files.add(file_path)
-            
-        except Exception as e:
-            print(f"❌ Erreur lors du traitement de {file_path}: {e}")
-    
-    def process_fandom_request(self, file_path):
-        """Traite une demande d'extraction de fandom"""
-        print(f"📖 Lecture du fichier: {file_path}")
-        
+
+        file_path = Path(event.src_path)
+        if file_path.name == 'data.json':
+            print(f"🔄 Fichier 'data.json' modifié. Vérification des nouvelles URLs...")
+            time.sleep(1)  # Attendre que le fichier soit complètement écrit
+            self.process_data_json(file_path)
+
+    def process_data_json(self, file_path):
+        """Traite le fichier data.json pour extraire les nouvelles URLs"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
+                requests = json.load(f)
+
+            if not isinstance(requests, list):
                 
-            # Vérifier la structure
-            if 'url' not in data:
-                print(f"❌ Pas d'URL trouvée dans {file_path}")
                 return
-                
-            fandom_url = data['url']
-            print(f"🎯 URL Fandom détectée: {fandom_url}")
-            
-            # Extraire le nom du fandom depuis l'URL
-            fandom_name = self.extract_fandom_name(fandom_url)
-            print(f"📛 Nom du fandom: {fandom_name}")
-            
-            # Lancer l'extraction
-            self.launch_character_extraction(fandom_url, fandom_name, file_path)
-            
+
+            new_requests_found = 0
+            for req in requests:
+                if isinstance(req, dict) and 'url' in req and req['url'] not in self.processed_urls:
+                    fandom_url = req['url']
+                    print(f"🎯 Nouvelle URL détectée: {fandom_url}")
+                    
+                    self.processed_urls.add(fandom_url)
+                    self.save_processed_urls() # Sauvegarder l'état
+                    
+                    fandom_name = self.extract_fandom_name(fandom_url)
+                    self.launch_character_extraction(fandom_url, fandom_name)
+                    new_requests_found += 1
+
+            if new_requests_found == 0:
+                print("✅ Aucune nouvelle URL à traiter dans data.json.")
+
         except json.JSONDecodeError:
             print(f"❌ Fichier JSON invalide: {file_path}")
         except Exception as e:
-            print(f"❌ Erreur lors de la lecture: {e}")
-    
+            print(f"❌ Erreur lors de la lecture de {file_path}: {e}")
+
     def extract_fandom_name(self, url):
         """Extrait le nom du fandom depuis l'URL"""
         try:
-            # Exemple: https://marvel.fandom.com/wiki/Marvel_Database -> marvel
-            from urllib.parse import urlparse
-            parsed = urlparse(url)
-            return parsed.netloc.split('.')[0]
-        except:
-            return "unknown_fandom"
-    
-    def launch_character_extraction(self, fandom_url, fandom_name, request_file):
+            return urlparse(url).netloc.split('.')[0]
+        except Exception as e:
+            print(f"⚠️  Impossible d'extraire le nom du fandom de {url}: {e}")
+            return f"unknown_fandom_{int(time.time())}"
+
+    def launch_character_extraction(self, fandom_url, fandom_name):
         """Lance l'extraction des personnages pour un fandom"""
-        print(f"🚀 Lancement de l'extraction pour {fandom_name}")
-        
-        # Créer un fichier temporaire avec la demande
-        temp_request = {
-            "fandom_name": fandom_name,
-            "fandom_url": fandom_url,
-            "request_file": request_file,
-            "status": "processing"
-        }
-        
-        temp_file = f"temp_request_{fandom_name}.json"
-        with open(temp_file, 'w', encoding='utf-8') as f:
-            json.dump(temp_request, f, indent=2)
-        
+        print(f"🚀 Lancement de l'extraction pour '{fandom_name}'...")
         try:
-            # Lancer le spider d'extraction
             cmd = [
                 'scrapy', 'crawl', 'single_fandom_extractor',
                 '-a', f'fandom_url={fandom_url}',
                 '-a', f'fandom_name={fandom_name}',
-                '-a', f'request_file={request_file}',
                 '-L', 'INFO'
             ]
             
-            print(f"🔧 Commande: {' '.join(cmd)}")
-            
-            # Lancer en arrière-plan
-            process = subprocess.Popen(
-                cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
-            
+            # Lancer en arrière-plan pour ne pas bloquer le moniteur
+            process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             print(f"✅ Extraction lancée pour {fandom_name} (PID: {process.pid})")
-            
+
+        except FileNotFoundError:
+            print("❌ Erreur: Scrapy n'est pas trouvé. Assurez-vous qu'il est installé et dans le PATH.")
         except Exception as e:
-            print(f"❌ Erreur lors du lancement: {e}")
-        finally:
-            # Nettoyer le fichier temporaire
-            if os.path.exists(temp_file):
-                os.remove(temp_file)
+            print(f"❌ Erreur lors du lancement de Scrapy: {e}")
+
+    def load_processed_urls(self):
+        """Charge les URLs déjà traitées depuis un fichier de cache."""
+        try:
+            if Path("processed_urls.json").exists():
+                with open("processed_urls.json", "r") as f:
+                    self.processed_urls = set(json.load(f))
+                    print(f"📚 {len(self.processed_urls)} URLs déjà traitées chargées.")
+        except (json.JSONDecodeError, IOError) as e:
+            print(f"⚠️  Impossible de charger les URLs traitées: {e}")
+
+    def save_processed_urls(self):
+        """Sauvegarde l'ensemble des URLs traitées."""
+        try:
+            with open("processed_urls.json", "w") as f:
+                json.dump(list(self.processed_urls), f)
+        except IOError as e:
+            print(f"⚠️  Impossible de sauvegarder les URLs traitées: {e}")
+
 
 def start_monitoring():
     """Démarre la surveillance du dossier back-end/data"""
+    back_end_data_path = Path("../back-end/data")
     
-    # Chemin vers le dossier à surveiller
-    back_end_data_path = "../back-end/data"
+    if not back_end_data_path.exists():
+        print(f"📂 Création du dossier de surveillance: {back_end_data_path.resolve()}")
+        back_end_data_path.mkdir(parents=True, exist_ok=True)
     
-    if not os.path.exists(back_end_data_path):
-        print(f"❌ Dossier {back_end_data_path} non trouvé")
-        print("Création du dossier pour les tests...")
-        os.makedirs(back_end_data_path, exist_ok=True)
-    
-    print(f"👀 Surveillance du dossier: {os.path.abspath(back_end_data_path)}")
-    print("🔄 En attente de nouveaux fichiers JSON...")
-    print("💡 Pour tester, créez un fichier JSON avec: {\"url\": \"https://fandom_url\"}")
+    # Créer un fichier data.json vide s'il n'existe pas
+    data_json_path = back_end_data_path / "data.json"
+    if not data_json_path.exists():
+        print(f"📄 Création du fichier 'data.json' initial.")
+        with open(data_json_path, 'w') as f:
+            json.dump([], f)
+
+    print(f"👀 Surveillance du fichier: {data_json_path.resolve()}")
+    print("💡 Modifiez ce fichier pour lancer une extraction.")
+    print("   Format attendu: [{\"url\": \"https://...\"}, {\"url\": \"https://...\"}]")
     print("⏹️  Appuyez sur Ctrl+C pour arrêter")
     
-    # Créer l'observateur
-    event_handler = FandomRequestHandler()
+    event_handler = DataJsonHandler()
     observer = Observer()
-    observer.schedule(event_handler, back_end_data_path, recursive=False)
+    observer.schedule(event_handler, str(back_end_data_path), recursive=False)
     
-    # Démarrer la surveillance
     observer.start()
-    
     try:
         while True:
             time.sleep(1)
