@@ -1,5 +1,5 @@
-import generateResponse from "../utils/generateResponse.js";
-import * as fs from "fs";
+import runScrapy from "../../../../utils/runScrapy.js";
+
 class ScrapController {
   constructor(data) {
     this.data = data;
@@ -12,20 +12,8 @@ class ScrapController {
         .status(500)
         .json({ error: "An error occurred while processing the request" });
     }
-    const url_json = {
-      url: this.data,
-    };
-
-    fs.writeFile('data/data.json', JSON.stringify(url_json), (err) => {
-      if (err) {
-        return res
-          .status(500)
-          .json({ error: "An error occurred while saving the URL" });
-      }
-      return res.status(200).json({
-        message: "URL saved successfully",
-      });
-    });
+    
+    runScrapy(this.data)
 
   }
 }
