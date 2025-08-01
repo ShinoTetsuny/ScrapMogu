@@ -1,0 +1,12 @@
+{
+  "pages_traitees": 21,
+  "personnages_trouves": 10,
+  "erreurs": [],
+  "pages_ignorees": [
+    "https://pokemon.fandom.com/wiki/News_Reporter"
+  ],
+  "start_time": "2025-08-01 14:51:36.103532",
+  "max_characters": 10,
+  "end_time": "2025-08-01 14:52:53.463049",
+  "duree_totale": "0:01:17.359517"
+}
