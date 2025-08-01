@@ -1,62 +1,55 @@
-import React from 'react';
+// src/pages/Compare.tsx
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from '../components/Card';
 import type { Character } from '../types/character';
 
-const mockCharacters : Character[] = [
-  {
-    id: '1',
-    name: 'Aria Stark',
-    image: 'https://static.posters.cz/image/1300/135445.jpg',
-    description: 'Assassine formée par les Sans-Visages.',
-    attributes: {
-      origine: 'Winterfell',
-      rôle: 'Assassin',
-      affiliation: 'Maison Stark',
-    },
-  },
-  {
-    id: '2',
-    name: 'Jon Snow',
-    image: 'https://static.wikia.nocookie.net/heroes-and-villain/images/4/47/Jon_Snow_profile.jpg',
-    description: 'Commandant de la Garde de Nuit devenu Roi du Nord.',
-    attributes: {
-      origine: 'Château Noir',
-      rôle: 'Guerrier',
-      affiliation: 'Maison Stark',
-    },
-  },
-  {
-    id: '3',
-    name: 'Daenerys Targaryen',
-    image: 'https://static.wikia.nocookie.net/wrestling-for-life/images/e/e3/Daenerys_Targaryen.jpg',
-    description: 'Mère des Dragons, héritière des Targaryen.',
-    attributes: {
-      origine: 'Dragonstone',
-      rôle: 'Reine',
-      affiliation: 'Maison Targaryen',
-    },
-  },
-  {
-    id: '4',
-    name: 'Tyrion Lannister',
-    image: 'https://cdn.theatlantic.com/thumbor/YWaxYWJGr9OU6p9xaaVD5vvw3_M=/480x168:3312x3000/1080x1080/media/img/mt/2019/04/80393c4672f3dbfa94c07164fc4b90bc95f0c620a6c96900108badc1cde33d36/original.jpg',
-    description: 'Main de la Reine et stratège politique.',
-    attributes: {
-      origine: 'Casterly Rock',
-      rôle: 'Conseiller',
-      affiliation: 'Maison Lannister',
-    },
-  },
-];
+function mapRawCharacter(raw: any): Character {
+  const attributes: Record<string, string> = {};
 
+  if (raw.attribute1_name && raw.attribute1_value) {
+    attributes[raw.attribute1_name] = raw.attribute1_value;
+  }
+
+  if (raw.attribute2_name && raw.attribute2_value) {
+    attributes[raw.attribute2_name] = raw.attribute2_value;
+  }
+
+  return {
+    id: raw.source_url,
+    name: raw.name,
+    image: raw.image_url,
+    description: raw.description,
+    attributes,
+  };
+}
 
 export default function Compare() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const ids = searchParams.get('ids')?.split(',') ?? [];
 
-  const selectedCharacters = mockCharacters.filter((char) => ids.includes(char.id));
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/api/scrap/history');
+        const data = await res.json();
+        const mapped = data.characters.map(mapRawCharacter);
+        setCharacters(mapped);
+      } catch (err) {
+        console.error('Erreur lors du fetch des personnages:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCharacters();
+  }, []);
+
+  const selectedCharacters = characters.filter((char) => ids.includes(char.id));
 
   const renderComparisonTable = () => {
     if (selectedCharacters.length !== 2) return null;
@@ -81,7 +74,6 @@ export default function Compare() {
             {allKeys.map((key) => {
               const valA = charA.attributes[key] ?? '—';
               const valB = charB.attributes[key] ?? '—';
-
               const isSame = valA === valB;
 
               return isSame ? (
@@ -109,7 +101,9 @@ export default function Compare() {
     <div className="mt-6">
       <h2 className="text-2xl font-bold mb-4">🔍 Comparaison de personnages</h2>
 
-      {selectedCharacters.length === 2 ? (
+      {loading ? (
+        <p>Chargement des personnages...</p>
+      ) : selectedCharacters.length === 2 ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {selectedCharacters.map((char) => (

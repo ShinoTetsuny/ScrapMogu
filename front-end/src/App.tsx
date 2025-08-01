@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -6,58 +6,38 @@ import FandomView from './pages/FandomView';
 import Compare from './pages/Compare';
 import Card from './components/Card';
 
-const mockCharacters = [
-  {
-    id: '1',
-    name: 'Aria Stark',
-    image: 'https://static.posters.cz/image/1300/135445.jpg',
-    description: 'Assassine formée par les Sans-Visages.',
-    attributes: {
-      origine: 'Winterfell',
-      rôle: 'Assassin',
-      affiliation: 'Maison Stark',
-    },
-  },
-  {
-    id: '2',
-    name: 'Jon Snow',
-    image: 'https://static.wikia.nocookie.net/heroes-and-villain/images/4/47/Jon_Snow_profile.jpg',
-    description: 'Commandant de la Garde de Nuit devenu Roi du Nord.',
-    attributes: {
-      origine: 'Château Noir',
-      rôle: 'Guerrier',
-      affiliation: 'Maison Stark',
-    },
-  },
-  {
-    id: '3',
-    name: 'Daenerys Targaryen',
-    image: 'https://static.wikia.nocookie.net/wrestling-for-life/images/e/e3/Daenerys_Targaryen.jpg',
-    description: 'Mère des Dragons, héritière des Targaryen.',
-    attributes: {
-      origine: 'Dragonstone',
-      rôle: 'Reine',
-      affiliation: 'Maison Targaryen',
-    },
-  },
-  {
-    id: '4',
-    name: 'Tyrion Lannister',
-    image: 'https://cdn.theatlantic.com/thumbor/YWaxYWJGr9OU6p9xaaVD5vvw3_M=/480x168:3312x3000/1080x1080/media/img/mt/2019/04/80393c4672f3dbfa94c07164fc4b90bc95f0c620a6c96900108badc1cde33d36/original.jpg',
-    description: 'Main de la Reine et stratège politique.',
-    attributes: {
-      origine: 'Casterly Rock',
-      rôle: 'Conseiller',
-      affiliation: 'Maison Lannister',
-    },
-  },
-];
+interface Character {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  attributes: Record<string, string>;
+  serie: string;
+}
 
 export default function App() {
-  const [showMock, setShowMock] = useState(false);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showCharacters, setShowCharacters] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
-  const [filters, setFilters] = useState<Record<string, string>>({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (showCharacters) {
+      setLoading(true);
+      fetch('http://localhost:3000/api/scrap/history')
+        .then(res => res.json())
+        .then(data => {
+          setCharacters(data.characters || []);
+          setLoading(false);
+        })
+        .catch(err => {
+          setError('Erreur lors du chargement des personnages.');
+          setLoading(false);
+        });
+    }
+  }, [showCharacters]);
 
   const toggleSelection = (id: string) => {
     setSelected(prev => {
@@ -72,36 +52,6 @@ export default function App() {
       navigate(`/compare?ids=${selected.join(',')}`);
     }
   };
-
-  // 🔍 Récupération des options de filtres
-  const attributeOptions = useMemo(() => {
-    const result: Record<string, Set<string>> = {};
-    mockCharacters.forEach((char) => {
-      for (const [key, value] of Object.entries(char.attributes)) {
-        if (!result[key]) result[key] = new Set();
-        result[key].add(value);
-      }
-    });
-    return result;
-  }, []);
-
-  // 🧠 Application des filtres aux personnages
-  const filteredCharacters = useMemo(() => {
-    return mockCharacters.filter((char) =>
-      Object.entries(filters).every(([key, value]) =>
-        char.attributes[key as keyof typeof char.attributes] === value
-      )
-    );
-  }, [filters]);
-
-  const handleFilterChange = (attribute: string, value: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      [attribute]: value,
-    }));
-  };
-
-  const clearFilters = () => setFilters({});
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -128,50 +78,23 @@ export default function App() {
           <Route path="/compare" element={<Compare />} />
         </Routes>
 
-        {/* MOCK: Affichage fictif + sélection */}
         <div className="mt-8 border-t pt-6">
-          <h2 className="text-lg font-semibold mb-4">🧪 Test avec données fictives</h2>
+          <h2 className="text-lg font-semibold mb-4">🧪 Données scrappées</h2>
 
           <button
-            onClick={() => setShowMock(!showMock)}
+            onClick={() => setShowCharacters(!showCharacters)}
             className="mb-4 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition"
           >
-            {showMock ? 'Masquer les données' : 'Afficher des exemples'}
+            {showCharacters ? 'Masquer' : 'Charger les personnages'}
           </button>
 
-          {showMock && (
+          {loading && <p className="text-gray-500">Chargement en cours...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+
+          {showCharacters && characters.length > 0 && (
             <>
-              {/* 🎛️ Filtres dynamiques */}
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                {Object.entries(attributeOptions).map(([key, values]) => (
-                  <div key={key}>
-                    <label className="block text-sm font-semibold mb-1 capitalize">{key}</label>
-                    <select
-                      className="w-full border p-2 rounded"
-                      value={filters[key] ?? ''}
-                      onChange={(e) => handleFilterChange(key, e.target.value)}
-                    >
-                      <option value="">— Tous —</option>
-                      {[...values].map((val) => (
-                        <option key={val} value={val}>
-                          {val}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={clearFilters}
-                className="text-sm text-blue-600 underline mb-4"
-              >
-                Réinitialiser les filtres
-              </button>
-
-              {/* 🧩 Liste des cartes filtrées */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {filteredCharacters.map((char) => (
+                {characters.map((char) => (
                   <div key={char.id} className="relative">
                     <Card character={char} />
                     <button

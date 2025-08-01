@@ -10,7 +10,7 @@ class ScrapController {
     try {
       this.data = req.body.url;
 
-      const filePath = "C:/Users/FabienETHEVE/OneDrive - ARTIMON/Bureau/MoguScrap/ScrapMogu/Mogu2/output.json";
+      const filePath = "C:/Dev/WebScrapping/dayFour/ScrapMogu/Mogu2/output.json";
 
       // 🧹 Supprimer le fichier s'il existe
       if (fs.existsSync(filePath)) {
@@ -38,7 +38,7 @@ class ScrapController {
 
  async get_history_scrap(req, res) {
     try {
-      const baseDir = "C:/Users/FabienETHEVE/OneDrive - ARTIMON/Bureau/MoguScrap/ScrapMogu/result";
+      const baseDir = "C:/Dev/WebScrapping/dayFour/ScrapMogu/result";
 
       // Récupérer la liste des dossiers dans result (catégories)
       const categories = fs.readdirSync(baseDir, { withFileTypes: true })
