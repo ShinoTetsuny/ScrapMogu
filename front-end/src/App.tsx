@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -21,7 +21,7 @@ const mockCharacters = [
   {
     id: '2',
     name: 'Jon Snow',
-    image: 'https://static.wikia.nocookie.net/game-of-thrones-le-trone-de-fer/images/f/fa/Jon_Snow.png',
+    image: 'https://static.wikia.nocookie.net/heroes-and-villain/images/4/47/Jon_Snow_profile.jpg',
     description: 'Commandant de la Garde de Nuit devenu Roi du Nord.',
     attributes: {
       origine: 'Château Noir',
@@ -43,7 +43,7 @@ const mockCharacters = [
   {
     id: '4',
     name: 'Tyrion Lannister',
-    image: 'https://static.wikia.nocookie.net/heros/images/6/65/Tyrion_Lannister_Infobox.png',
+    image: 'https://cdn.theatlantic.com/thumbor/YWaxYWJGr9OU6p9xaaVD5vvw3_M=/480x168:3312x3000/1080x1080/media/img/mt/2019/04/80393c4672f3dbfa94c07164fc4b90bc95f0c620a6c96900108badc1cde33d36/original.jpg',
     description: 'Main de la Reine et stratège politique.',
     attributes: {
       origine: 'Casterly Rock',
@@ -56,13 +56,14 @@ const mockCharacters = [
 export default function App() {
   const [showMock, setShowMock] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [filters, setFilters] = useState<Record<string, string>>({});
   const navigate = useNavigate();
 
   const toggleSelection = (id: string) => {
     setSelected(prev => {
       if (prev.includes(id)) return prev.filter(pid => pid !== id);
       if (prev.length < 2) return [...prev, id];
-      return prev; // max 2
+      return prev;
     });
   };
 
@@ -71,6 +72,36 @@ export default function App() {
       navigate(`/compare?ids=${selected.join(',')}`);
     }
   };
+
+  // 🔍 Récupération des options de filtres
+  const attributeOptions = useMemo(() => {
+    const result: Record<string, Set<string>> = {};
+    mockCharacters.forEach((char) => {
+      for (const [key, value] of Object.entries(char.attributes)) {
+        if (!result[key]) result[key] = new Set();
+        result[key].add(value);
+      }
+    });
+    return result;
+  }, []);
+
+  // 🧠 Application des filtres aux personnages
+  const filteredCharacters = useMemo(() => {
+    return mockCharacters.filter((char) =>
+      Object.entries(filters).every(([key, value]) =>
+        char.attributes[key as keyof typeof char.attributes] === value
+      )
+    );
+  }, [filters]);
+
+  const handleFilterChange = (attribute: string, value: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      [attribute]: value,
+    }));
+  };
+
+  const clearFilters = () => setFilters({});
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -110,8 +141,37 @@ export default function App() {
 
           {showMock && (
             <>
+              {/* 🎛️ Filtres dynamiques */}
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                {Object.entries(attributeOptions).map(([key, values]) => (
+                  <div key={key}>
+                    <label className="block text-sm font-semibold mb-1 capitalize">{key}</label>
+                    <select
+                      className="w-full border p-2 rounded"
+                      value={filters[key] ?? ''}
+                      onChange={(e) => handleFilterChange(key, e.target.value)}
+                    >
+                      <option value="">— Tous —</option>
+                      {[...values].map((val) => (
+                        <option key={val} value={val}>
+                          {val}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={clearFilters}
+                className="text-sm text-blue-600 underline mb-4"
+              >
+                Réinitialiser les filtres
+              </button>
+
+              {/* 🧩 Liste des cartes filtrées */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {mockCharacters.map((char) => (
+                {filteredCharacters.map((char) => (
                   <div key={char.id} className="relative">
                     <Card character={char} />
                     <button

@@ -1,4 +1,5 @@
-export interface Character {
+export type Character = {
+  id: string;
   name: string;
   image: string;
   description: string;
