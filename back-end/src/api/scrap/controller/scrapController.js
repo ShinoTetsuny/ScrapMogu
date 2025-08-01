@@ -1,6 +1,6 @@
 import runScrapy from "../../../../utils/runScrapy.js";
 import fs from "fs";
-
+import path from "path";
 class ScrapController {
   constructor(data) {
     this.data = data;
@@ -36,8 +36,47 @@ class ScrapController {
     }
   }
 
-  async get_history_scrap(req, res) {
-    
+ async get_history_scrap(req, res) {
+    try {
+      const baseDir = "C:/Users/FabienETHEVE/OneDrive - ARTIMON/Bureau/MoguScrap/ScrapMogu/result";
+
+      // Récupérer la liste des dossiers dans result (catégories)
+      const categories = fs.readdirSync(baseDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      const history = [];
+
+      for (const category of categories) {
+        const categoryPath = path.join(baseDir, category);
+
+        // Lister les fichiers JSON dans ce dossier catégorie
+        const files = fs.readdirSync(categoryPath, { withFileTypes: true })
+          .filter(dirent => dirent.isFile() && dirent.name.endsWith(".json"))
+          .map(dirent => dirent.name);
+
+        for (const file of files) {
+          const filePath = path.join(categoryPath, file);
+
+          try {
+            const fileData = await this.readJsonFile(filePath);
+            history.push({
+              category,
+              file,
+              data: fileData
+            });
+          } catch (err) {
+            console.error(`Erreur lecture fichier ${filePath}:`, err);
+            // Tu peux choisir d’ignorer ou retourner une erreur selon ce que tu veux faire
+          }
+        }
+      }
+
+      return res.status(200).json({ history });
+    } catch (error) {
+      console.error("Erreur dans get_history_scrap:", error);
+      return res.status(500).json({ error: "Erreur lors de la récupération de l'historique." });
+    }
   }
   async readJsonFile(filepath) {
     try {
