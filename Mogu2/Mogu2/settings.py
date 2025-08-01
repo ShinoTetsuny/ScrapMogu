@@ -1,4 +1,4 @@
-# Scrapy settings for Mogu project
+# Scrapy settings for Mogu2 project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,16 +7,16 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "Mogu"
+BOT_NAME = "Mogu2"
 
-SPIDER_MODULES = ["Mogu.spiders"]
-NEWSPIDER_MODULE = "Mogu.spiders"
+SPIDER_MODULES = ["Mogu2.spiders"]
+NEWSPIDER_MODULE = "Mogu2.spiders"
 
 ADDONS = {}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "Mogu (+http://www.yourdomain.com)"
+USER_AGENT = "Mogu2 Fandom Scraper (+https://github.com/fandom-scraper)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -24,7 +24,12 @@ ROBOTSTXT_OBEY = True
 # Concurrency and throttling settings
 #CONCURRENT_REQUESTS = 16
 CONCURRENT_REQUESTS_PER_DOMAIN = 1
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 2  # Respecter les serveurs Fandom
+RANDOMIZE_DOWNLOAD_DELAY = 0.5  # Randomiser les délais
+
+# Retry settings
+RETRY_TIMES = 3
+RETRY_HTTP_CODES = [500, 502, 503, 504, 408, 429]
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -41,13 +46,13 @@ DOWNLOAD_DELAY = 1
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "Mogu.middlewares.MoguSpiderMiddleware": 543,
+#    "Mogu2.middlewares.Mogu2SpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "Mogu.middlewares.MoguDownloaderMiddleware": 543,
+#    "Mogu2.middlewares.Mogu2DownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -58,9 +63,9 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "Mogu.pipelines.MoguPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    "Mogu2.pipelines.FandomJsonPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

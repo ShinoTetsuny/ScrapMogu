@@ -1,0 +1,46 @@
+{
+  "fandom_name": "overwatch",
+  "scraped_at": "2025-08-01T13:57:44.270602",
+  "total_characters": 3,
+  "characters": [
+    {
+      "source_url": "https://overwatch.fandom.com/wiki/Wallach",
+      "fandom_name": "overwatch",
+      "scraped_at": "2025-08-01T13:57:26.152024",
+      "name": "Wallach",
+      "image_url": "https://static.wikia.nocookie.net/overwatch_gamepedia/images/2/2f/Us.png/revision/latest?cb=20220128103449",
+      "description": "(one of the academy's students), he had a \"weaselly\" face.",
+      "character_type": "Characters",
+      "attribute1_name": "Attribut 1",
+      "attribute1_value": "Non spécifié",
+      "attribute2_name": "Attribut 2",
+      "attribute2_value": "Non spécifié"
+    },
+    {
+      "source_url": "https://overwatch.fandom.com/wiki/The_Enigma",
+      "fandom_name": "overwatch",
+      "scraped_at": "2025-08-01T13:57:27.143833",
+      "name": "The Enigma",
+      "image_url": "https://static.wikia.nocookie.net/overwatch_gamepedia/images/1/1e/The_Enigma.jpg/revision/latest/scale-to-width-down/350?cb=20230819235005",
+      "description": "The Enigma operated out of a bunker or similar environs. Aware of",
+      "character_type": "Characters",
+      "attribute1_name": "Attribut 1",
+      "attribute1_value": "Non spécifié",
+      "attribute2_name": "Attribut 2",
+      "attribute2_value": "Non spécifié"
+    },
+    {
+      "source_url": "https://overwatch.fandom.com/wiki/Aleluia_Taupega",
+      "fandom_name": "overwatch",
+      "scraped_at": "2025-08-01T13:57:28.135905",
+      "name": "Aleluia Taupega",
+      "image_url": "https://static.wikia.nocookie.net/overwatch_gamepedia/images/7/7c/Ws.png/revision/latest?cb=20220128102358",
+      "description": ". They led a small group of students and professors in the creation of",
+      "character_type": "Characters",
+      "attribute1_name": "Attribut 1",
+      "attribute1_value": "Non spécifié",
+      "attribute2_name": "Attribut 2",
+      "attribute2_value": "Non spécifié"
+    }
+  ]
+}
