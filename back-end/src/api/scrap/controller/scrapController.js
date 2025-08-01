@@ -13,7 +13,7 @@ class ScrapController {
       await runScrapy(this.data);
 
       // 🔥 Chemin ABSOLU ici
-      const filePath = "C:/Users/FabienETHEVE/OneDrive - ARTIMON/Bureau/MoguScrap/ScrapMogu/Mogu2/output.json";
+      const filePath = "C:/Dev/WebScrapping/dayFour/ScrapMogu/Mogu2/output.json";
       const data = await this.readJsonFile(filePath);
 
       return res.status(200).json({ data });

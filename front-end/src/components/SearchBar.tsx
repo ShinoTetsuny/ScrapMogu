@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function SearchBar({ onSearch }: { onSearch: (url: string) => void }) {
-  const [url, setUrl] = useState('');
+export default function SearchBar({
+  onSearch,
+  initialUrl = '',
+}: {
+  onSearch: (url: string) => void;
+  initialUrl?: string;
+}) {
+  const [url, setUrl] = useState(initialUrl);
+
+  useEffect(() => {
+    setUrl(initialUrl); // pour mettre à jour si ça vient du routeur
+  }, [initialUrl]);
 
   return (
     <div className="flex gap-2 items-center w-full max-w-2xl">
