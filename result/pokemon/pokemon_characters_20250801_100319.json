@@ -1,0 +1,72 @@
+{
+  "fandom_name": "pokemon",
+  "scraped_at": "2025-08-01T10:03:51.211195",
+  "total_characters": 5,
+  "characters": [
+    {
+      "source_url": "https://pokemon.fandom.com/wiki/Lucy_Stevens",
+      "fandom_name": "pokemon",
+      "scraped_at": "2025-08-01T10:03:26.912347",
+      "name": "Lucy Stevens",
+      "image_url": "https://static.wikia.nocookie.net/pokemon/images/d/d0/Lucy_Stevens_%28Detective_Pikachu_Movie%29.jpg/revision/latest/scale-to-width-down/268?cb=20230212195437",
+      "description": "Lucy is a junior journalist and reporter, who is accompanied by a",
+      "character_type": "Ryme City",
+      "attribute1_name": "Hometown",
+      "attribute1_value": "Ryme City",
+      "attribute2_name": "Debut",
+      "attribute2_value": "\""
+    },
+    {
+      "source_url": "https://pokemon.fandom.com/wiki/Ash_Ketchum",
+      "fandom_name": "pokemon",
+      "scraped_at": "2025-08-01T10:03:27.918207",
+      "name": "Ash Ketchum",
+      "image_url": "https://static.wikia.nocookie.net/pokemon/images/7/76/Ash_anime_The_Beginning.png/revision/latest?cb=20110507193331",
+      "description": "region who has always dreamed of becoming the world's best",
+      "character_type": ",",
+      "attribute1_name": "Family",
+      "attribute1_value": "Delia Ketchum",
+      "attribute2_name": "Hometown",
+      "attribute2_value": "Pallet Town"
+    },
+    {
+      "source_url": "https://pokemon.fandom.com/wiki/Item_maniac",
+      "fandom_name": "pokemon",
+      "scraped_at": "2025-08-01T10:03:29.033516",
+      "name": "Item maniac",
+      "image_url": "https://static.wikia.nocookie.net/pokemon/images/7/72/0235Smeargle.png/revision/latest/scale-to-width-down/80?cb=20240717140704",
+      "description": "at a higher price than they would receive by selling it at a",
+      "character_type": "Characters",
+      "attribute1_name": "Attribut 1",
+      "attribute1_value": "Non spécifié",
+      "attribute2_name": "Attribut 2",
+      "attribute2_value": "Non spécifié"
+    },
+    {
+      "source_url": "https://pokemon.fandom.com/wiki/Harry_Goodman_(Pok%C3%A9mon:_Detective_Pikachu)",
+      "fandom_name": "pokemon",
+      "scraped_at": "2025-08-01T10:03:31.037682",
+      "name": "Harry Goodman (Pokémon: Detective Pikachu)",
+      "image_url": "https://static.wikia.nocookie.net/pokemon/images/9/96/Harry_Detecttive_Pikachu.png/revision/latest/scale-to-width-down/268?cb=20200709182039",
+      "description": ". He is portrayed by Ryan Reynolds and voiced by Hidetoshi Nishijima in the Japanese dub.",
+      "character_type": "Ryme City",
+      "attribute1_name": "Family",
+      "attribute1_value": "Unnamed mother-in-law",
+      "attribute2_name": "Hometown",
+      "attribute2_value": "Ryme City"
+    },
+    {
+      "source_url": "https://pokemon.fandom.com/wiki/Draconid_people",
+      "fandom_name": "pokemon",
+      "scraped_at": "2025-08-01T10:03:34.947508",
+      "name": "Draconid people",
+      "image_url": "https://static.wikia.nocookie.net/pokemon/images/f/f2/Draconid_People.jpg/revision/latest/scale-to-width-down/180?cb=20210719183932",
+      "description": "The Draconid people were one of the first inhabitants of the Hoenn region. They were a tribe consisting of",
+      "character_type": "Characters",
+      "attribute1_name": "Attribut 1",
+      "attribute1_value": "Non spécifié",
+      "attribute2_name": "Attribut 2",
+      "attribute2_value": "Non spécifié"
+    }
+  ]
+}
