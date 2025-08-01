@@ -9,7 +9,6 @@ const job = new CronJob('*/5 * * * * *', () => {
   console.log('Vérification du fichier toutes les 5 secondes...');
   checkFile();
 });
-job.start();
 app.listen(process.env.PORT_GATEWAY, () => {
   console.log(`Gateway is running on port ${process.env.PORT_GATEWAY}`);
 });
